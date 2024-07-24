@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { Button, Card, TextField, Typography } from "@mui/material";
 import swim from "../../public/swim_01.jpg";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -29,6 +30,11 @@ export default function Home() {
               variant="standard"
             />
             <Button variant="contained">Login</Button>
+            <Typography variant="body1">
+              Não possui cadastro?
+              &nbsp;
+              <Link href="/register">Registre-se</Link>
+            </Typography>
           </form>
         </Card>
       </div>
