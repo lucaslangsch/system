@@ -5,15 +5,15 @@ import styles from "./page.module.css";
 import { Alert, Button, Card, TextField, Typography } from "@mui/material";
 import swim from "../../../public/swim_01.jpg";
 import { useFormState } from 'react-dom'
-import register from "../actions/registerUser";
+import registerUser from "../actions/registerUser";
 
 export default function Register() {
   const prevState = {
     message: '',
   }
 
-  const [state, formAction] = useFormState(register, prevState)
-  console.log(state)
+  const [state, formAction] = useFormState(registerUser, prevState)
+
   return (
     <main className={styles.main}>
       <div className={styles.containerMain}>

@@ -15,8 +15,7 @@ function validatePassword(password: string) {
   return true
 }
 
-
-export default async function register(prevState: any, form: FormData) {
+export default async function registerUser(prevState: any, form: FormData) {
   "use server"
   const name: any = form.get('name')
   const email = form.get('email')
@@ -56,5 +55,4 @@ export default async function register(prevState: any, form: FormData) {
       message: 'Erro no servidor, por favor tente novamente mais tarde',
     }
   }
-
 }
