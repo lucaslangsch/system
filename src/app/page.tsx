@@ -7,13 +7,20 @@ import swim from "../../public/swim_01.jpg";
 import Link from "next/link";
 import authUser from "./actions/authUser";
 import { useFormState } from "react-dom";
+import { useRouter } from "next/navigation";
+
 
 export default function Home() {
+  const router = useRouter();
   const prevState = {
     message: '',
   }
 
   const [state, formAction] = useFormState(authUser, prevState)
+
+  if (state.message === 'ok') {
+    router.push('/dashboard')
+  }
 
   return (
     <main className={styles.main}>

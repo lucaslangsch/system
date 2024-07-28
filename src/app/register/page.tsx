@@ -6,13 +6,19 @@ import { Alert, Button, Card, TextField, Typography } from "@mui/material";
 import swim from "../../../public/swim_01.jpg";
 import { useFormState } from 'react-dom'
 import registerUser from "../actions/registerUser";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
+  const router = useRouter();
   const prevState = {
     message: '',
   }
 
   const [state, formAction] = useFormState(registerUser, prevState)
+
+  if (state.message === 'ok') {
+    router.push('/dashboard')
+  }
 
   return (
     <main className={styles.main}>

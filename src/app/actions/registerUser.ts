@@ -1,5 +1,7 @@
 'use server'
 
+import { cookies } from 'next/headers'
+
 function validateMail(email: string) {
   const regex = /^[a-zA-Z0–9._-]+@[a-zA-Z0–9.-]+\.[a-zA-Z]{2,4}$/;
   if (!regex.test(email)) {
@@ -44,7 +46,14 @@ export default async function registerUser(prevState: any, form: FormData) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data = await response.json();
+    await response.json();
+
+    cookies().set({
+      name: 'currentUser',
+      value: name,
+      httpOnly: true,
+    })
+
     return {
       message: 'ok',
     }

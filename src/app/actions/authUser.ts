@@ -1,5 +1,7 @@
 'use server'
 
+import { cookies } from 'next/headers'
+
 export default async function authUser(prevState: any, form: FormData) {
   "use server"
   const email: any = form.get('email')
@@ -21,6 +23,13 @@ export default async function authUser(prevState: any, form: FormData) {
     }
 
     const data = await response.json();
+
+    cookies().set({
+      name: 'currentUser',
+      value: data.data.name,
+      httpOnly: true,
+    })
+
     return {
       message: 'ok',
     }

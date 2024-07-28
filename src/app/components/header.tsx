@@ -7,22 +7,16 @@ import Typography from '@mui/material/Typography';
 import { cookies } from 'next/headers'
 
 
-export async function getData() {
-  'use server'
-  const cookieStore = cookies()
-  cookies().set('name', 'lee')
-  const data = cookieStore.get('name')
-  console.log(data)
-}
-
 export default function ButtonAppBar() {
-  const data = getData()
+  const cookieStore = cookies()
+  const user = cookieStore.get('currentUser')
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Olá,
+            Olá, { user?.value }
           </Typography>
         </Toolbar>
       </AppBar>
