@@ -2,9 +2,9 @@ import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 
 export async function POST(request) {
-  const body = JSON.parse(request.body);
+  const body = await request.json()
 
-  const bod = request.body;
+  const bod = JSON.stringify(await request.json())
   try {
     const result =
       await sql`INSERT INTO pets1 (name, owner) VALUES (${body}, ${bod});`;
