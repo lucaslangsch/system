@@ -4,7 +4,9 @@ import { NextResponse } from 'next/server';
 export async function POST(request) {
   const body = await request.json()
 
-  const bod = JSON.stringify(await request.json())
+
+
+  const bod = body.items
   try {
     const result =
       await sql`INSERT INTO pets1 (name, owner) VALUES (${body}, ${bod});`;
